@@ -24,3 +24,9 @@ Para descubrir la estructura del sitio web y localizar recursos no vinculados en
 
 ```bash
 dirb [http://fakebank.thm](http://fakebank.thm)
+
+## ![Análisis de la Imagen 1](dirbuster.png): La captura de pantalla muestra la ejecución del escáner DIRB v2.22 apuntando al objetivo http://fakebank.thm. La herramienta realizó una fuerza bruta de directorios analizando códigos de respuesta HTTP, encontrando exitosamente dos recursos críticos:
+
+http://fakebank.thm/bank-transfer (Código 200 OK / Tamaño: 4663 bytes).
+
+http://fakebank.thm/images (Código 301 Redirect / Tamaño: 179 bytes).
