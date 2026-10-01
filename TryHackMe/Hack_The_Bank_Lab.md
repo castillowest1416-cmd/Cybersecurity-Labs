@@ -41,7 +41,7 @@ http://fakebank.thm/images (Código 301 Redirect / Tamaño: 179 bytes).
 
 Al ingresar directamente a la URL descubierta (http://fakebank.thm/bank-transfer), el sistema permitió el acceso inmediato al panel de administración de personal (Staff Account / Admin Portal) sin solicitar credenciales ni token de sesión activo.
 
-## * ![Análisis de la Imagen 2](bank transfer.png):
+## ![Análisis de la Imagen 2](bank%20transfer.png):
 Se muestra el formulario web del panel administrativo. Se procedió a interactuar con los campos de entrada:
 * **Cuenta de destino:** Se seleccionó la cuenta objetivo Acc 8881.
 * **Monto a depositar:** Se especificó una cantidad de 2,000 USD.
