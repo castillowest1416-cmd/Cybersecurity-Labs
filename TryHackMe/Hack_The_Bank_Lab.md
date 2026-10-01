@@ -52,5 +52,46 @@ Se muestra el formulario web del panel administrativo. Se procedió a interactua
 ## 5. Fase 3: Post-Explotación y Verificación de Impacto
 Tras enviar la solicitud HTTP POST, el backend procesó el depósito sin validar la identidad ni la autorización del emisor. La transacción fue aprobada de forma instantánea.
 
-## * ![Análisis de la Imagen 3](BANK-HACKED.png):
-La interfaz desplegó una confirmación visual de la vulneración exitosa, entregando el identificador único o flag asignado por la plataforma:   Respuesta del sistema: "Congratulations - You've hacked the bank!"   Flag asignada: BANK-HACKED   6. Fase 4: Matriz de Clasificación del IncidenteParámetroDetalle / HallazgoTipo de VulnerabilidadOWASP A01:2021 – Broken Access ControlHerramienta Ofensiva UsadaDIRB (Directory Brute Forcer)Criticidad OWASPAlta (CVSS v3: 8.6)Causa RaízFalta de controles de autenticación en la ruta /bank-transferPrueba de Exposición (Flag)BANK-HACKED7. Fase 5: Contención, Erradicación y Remedación (Enfoque SOC)Para contener y mitigar este tipo de incidentes en un entorno de producción real, se establecen las siguientes medidas defensivas:Medidas Inmediatas (Contención y Erradicación)Restricción de Ruta: Bloquear temporalmente el acceso público a la ruta /bank-transfer a nivel de servidor web (Apache/Nginx) o mediante reglas de Firewall de Aplicación Web (WAF).Invalidación de Sesiones: Asegurar que cualquier transacción bancaria requiera una sesión re-autenticada y un segundo factor de autenticación (2FA/MFA).Medidas Estratégicas (Remedación a Largo Plazo)Implementación de RBAC: Configurar un Control de Acceso Basado en Roles (Role-Based Access Control) en la capa del backend, validando en cada petición que el usuario pertenezca al rol Admin.Uso de Tokens Anti-CSRF: Incorporar tokens aleatorios de un solo uso (Custom Anti-CSRF Tokens) en todos los formularios de transferencia financiera.Hardening del Servidor Web: Deshabilitar el listado e inspección de directorios no indexados y configurar encabezados de seguridad HTTP.8. Fase 6: Monitoreo y Reglas de Detección (SIEM / Logs)Un Analista SOC debe identificar estos patrones en los registros de eventos (logs):Detección de Escaneo (DIRB): Configurar alertas en el SIEM ante ráfagas de peticiones HTTP GET dirigidas a rutas inexistentes (404 Not Found) desde una sola IP en un intervalo menor a 60 segundos.Detección de Accesos Anómalos: Monitorear respuestas HTTP 200 OK en la ruta /bank-transfer provenientes de direcciones IP externas o no pertenecientes a la red interna corporativa.9. Lecciones AprendidasEl ejercicio demuestra que la seguridad no puede depender del "ocultamiento" de direcciones URL (Security through obscurity). Un atacante utilizará herramientas automatizadas de reconocimiento para mapear la infraestructura en cuestión de minutos. Toda función crítica o financiera debe contar con validaciones estrictas en el lado del servidor (Server-Side Validation).
+##  ![Análisis de la Imagen 3](BANK-HACKED.png):
+La interfaz desplegó una confirmación visual de la vulneración exitosa, entregando el identificador único o flag asignado por la plataforma:
+* **Respuesta del sistema:** "Congratulations - You've hacked the bank!"
+* **Flag asignada:** BANK-HACKED
+
+---
+
+## 6. Fase 4: Matriz de Clasificación del Incidente
+| Parámetro | Detalle / Hallazgo |
+| :--- | :--- |
+| **Tipo de Vulnerabilidad** | OWASP A01:2021 – Broken Access Control |
+| **Herramienta Ofensiva Usada** | DIRB (Directory Brute Forcer) |
+| **Criticidad OWASP** | Alta (CVSS v3: 8.6) |
+| **Causa Raíz** | Falta de controles de autenticación en la ruta `/bank-transfer` |
+| **Prueba de Exposición (Flag)** | `BANK-HACKED` |
+
+---
+
+## 7. Fase 5: Contención, Erradicación y Remedación (Enfoque SOC)
+
+Para contener y mitigar este tipo de incidentes en un entorno de producción real, se establecen las siguientes medidas defensivas:
+
+  ## Medidas Inmediatas (Contención y Erradicación)
+* **Restricción de Ruta:** Bloquear temporalmente el acceso público a la ruta /bank-transfer a nivel de servidor web (Apache/Nginx) o mediante reglas de Firewall de Aplicación Web (WAF).
+* **Invalidación de Sesiones:** Asegurar que cualquier transacción bancaria requiera una sesión re-autenticada y un segundo factor de autenticación (2FA/MFA).
+  ##Medidas Estratégicas (Remedación a Largo Plazo)
+* **Implementación de RBAC:** Configurar un Control de Acceso Basado en Roles (Role-Based Access Control) en la capa del backend, validando en cada petición que el usuario pertenezca al rol Admin.
+* **Uso de Tokens Anti-CSRF:** Incorporar tokens aleatorios de un solo uso (Custom Anti-CSRF Tokens) en todos los formularios de transferencia financiera.
+* **Hardening del Servidor Web:** Deshabilitar el listado e inspección de directorios no indexados y configurar encabezados de seguridad HTTP.
+
+---
+
+## 8. Fase 6: Monitoreo y Reglas de Detección (SIEM / Logs)
+
+Un Analista SOC debe identificar estos patrones en los registros de eventos (logs):
+
+* **Detección de Escaneo (DIRB):** Configurar alertas en el SIEM ante ráfagas de peticiones HTTP GET dirigidas a rutas inexistentes (404 Not Found) desde una sola IP en un intervalo menor a 60 segundos.
+* **Detección de Accesos Anómalos:** Monitorear respuestas HTTP 200 OK en la ruta /bank-transfer provenientes de direcciones IP externas o no pertenecientes a la red interna corporativa.
+
+---
+
+## 9. Lecciones Aprendidas
+El ejercicio demuestra que la seguridad no puede depender del "ocultamiento" de direcciones URL (Security through obscurity). Un atacante utilizará herramientas automatizadas de reconocimiento para mapear la infraestructura en cuestión de minutos. Toda función crítica o financiera debe contar con validaciones estrictas en el lado del servidor (Server-Side Validation).
