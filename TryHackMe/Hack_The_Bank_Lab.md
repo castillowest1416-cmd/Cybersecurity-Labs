@@ -74,10 +74,10 @@ La interfaz desplegó una confirmación visual de la vulneración exitosa, entre
 
 Para contener y mitigar este tipo de incidentes en un entorno de producción real, se establecen las siguientes medidas defensivas:
 
-  ## Medidas Inmediatas (Contención y Erradicación)
+## Medidas Inmediatas (Contención y Erradicación)
 * **Restricción de Ruta:** Bloquear temporalmente el acceso público a la ruta /bank-transfer a nivel de servidor web (Apache/Nginx) o mediante reglas de Firewall de Aplicación Web (WAF).
 * **Invalidación de Sesiones:** Asegurar que cualquier transacción bancaria requiera una sesión re-autenticada y un segundo factor de autenticación (2FA/MFA).
-  ##Medidas Estratégicas (Remedación a Largo Plazo)
+## Medidas Estratégicas (Remedación a Largo Plazo)
 * **Implementación de RBAC:** Configurar un Control de Acceso Basado en Roles (Role-Based Access Control) en la capa del backend, validando en cada petición que el usuario pertenezca al rol Admin.
 * **Uso de Tokens Anti-CSRF:** Incorporar tokens aleatorios de un solo uso (Custom Anti-CSRF Tokens) en todos los formularios de transferencia financiera.
 * **Hardening del Servidor Web:** Deshabilitar el listado e inspección de directorios no indexados y configurar encabezados de seguridad HTTP.
