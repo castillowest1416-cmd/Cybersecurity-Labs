@@ -23,8 +23,8 @@ El presente informe documenta la simulación de ataque y posterior análisis def
 Para descubrir la estructura del sitio web y localizar recursos no vinculados en el menú principal, se utilizó la herramienta de auditoría de seguridad **DIRB** desde la línea de comandos de Linux.
 
 ```bash
-dirb [http://fakebank.thm](http://fakebank.thm)
-´´´
+dirb http://fakebank.thm
+```
 
 ## ![Análisis de la Imagen 1](dirbuster.png): La captura de pantalla muestra la ejecución del escáner DIRB v2.22 apuntando al objetivo http://fakebank.thm. La herramienta realizó una fuerza bruta de directorios analizando códigos de respuesta HTTP, encontrando exitosamente dos recursos críticos:
 
